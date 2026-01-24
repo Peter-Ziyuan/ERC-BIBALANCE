@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "ERC BIBALANCE & CORTICAL TRACKING Project",
+  name: "ERC BIBALANCE Project",
   title: "Understanding Dyslexia and the Brain",
   description:"A reader-friendly introduction website by BCBL",
   accentColor: "#1d4ed8",
