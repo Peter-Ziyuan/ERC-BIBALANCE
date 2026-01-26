@@ -21,10 +21,10 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
           <div class="lg:col-span-8">
             <div class="space-y-8">
               <img
-  src={`${import.meta.env.BASE_URL}team/pi.png`}
+  src={new URL('../public/team/pi.png', import.meta.url).pathname}
   alt="Research Team"
-  class="w-48 rounded-xl"
 />
+
 
 
               {siteConfig.projects.map((project, index) => {
