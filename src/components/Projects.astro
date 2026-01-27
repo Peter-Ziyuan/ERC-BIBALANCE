@@ -3,35 +3,33 @@ import { siteConfig } from "../config";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 ---
 
-{
-  hasProjects && (
-    <section id="projects" class="p-8 sm:p-12 md:p-16 lg:p-24">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+<section id="projects" class="p-8 sm:p-12 md:p-16 lg:p-24">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
 
-        {/* LEFT TITLE COLUMN */}
-        <div class="lg:col-span-4">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
-            Our Research Team at BCBL
-          </h2>
-          <div
-            class="w-[75px] h-[5px] mt-2 rounded-full"
-            style={`background-color: ${siteConfig.accentColor}`}
-          />
-        </div>
+    {/* LEFT TITLE COLUMN */}
+    <div class="lg:col-span-4">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+        Our Research Team at BCBL
+      </h2>
+      <div
+        class="w-[75px] h-[5px] mt-2 rounded-full"
+        style={`background-color: ${siteConfig.accentColor}`}
+      />
+    </div>
 
-        {/* RIGHT CONTENT COLUMN */}
-        <div class="lg:col-span-8">
-          <div class="space-y-10">
+    {/* RIGHT CONTENT COLUMN */}
+    <div class="lg:col-span-8">
+      <div class="space-y-10">
 
-            {/* TEAM PHOTO NOW UNDER THE TITLE */}
-            <img
-              src={`${import.meta.env.BASE_URL}/team/pi.png`}
-              alt="Research Team"
-              class="w-full max-w-5xl rounded-2xl shadow-xl object-cover"
-            />
+        {/* TEAM PHOTO NOW UNDER THE TITLE */}
+        <img
+          src={`${import.meta.env.BASE_URL}/team/pi.png`}
+          alt="Research Team"
+          class="w-full max-w-5xl rounded-2xl shadow-xl object-cover"
+        />
 
-            {/* TEAM CARDS */}
-            {siteConfig.projects.map((project, index) => {
+        {/* TEAM CARDS - Only show if there are projects */}
+        {hasProjects && siteConfig.projects.map((project, index) => {
               const Component = project.link ? "a" : "div";
               const linkProps = project.link
                 ? {
@@ -83,10 +81,8 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
               );
             })}
 
-          </div>
-        </div>
-
       </div>
-    </section>
-  )
-}
+    </div>
+
+  </div>
+</section>
