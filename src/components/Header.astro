@@ -1,9 +1,10 @@
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
   <nav class="max-w-7xl mx-auto px-8 py-4">
-    <ul class="flex items-center gap-8 justify-center">
+    <!-- Desktop Navigation -->
+    <ul class="hidden md:flex items-center gap-8 justify-center">
       <li>
         <a
           href="#about"
@@ -37,10 +38,63 @@
         </a>
       </li>
     </ul>
+
+    <!-- Mobile Hamburger Button -->
+    <button
+      id="hamburger"
+      class="md:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Toggle menu"
+    >
+      <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+    </button>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden bg-white/95 backdrop-blur-sm"
+  >
+    <ul class="flex flex-col py-4">
+      <li>
+        <a
+          href="#about"
+          class="block px-8 py-3 text-gray-900 hover:bg-gray-100 transition-colors font-medium"
+        >
+          Dyslexia & Bilingualism
+        </a>
+      </li>
+      <li>
+        <a
+          href="#projects"
+          class="block px-8 py-3 text-gray-900 hover:bg-gray-100 transition-colors font-medium"
+        >
+          Our Research Team at BCBL
+        </a>
+      </li>
+      <li>
+        <a
+          href="#experience"
+          class="block px-8 py-3 text-gray-900 hover:bg-gray-100 transition-colors font-medium"
+        >
+          Our Lab at BCBL
+        </a>
+      </li>
+      <li>
+        <a
+          href="#education"
+          class="block px-8 py-3 text-gray-900 hover:bg-gray-100 transition-colors font-medium"
+        >
+          Signing Up for the Project
+        </a>
+      </li>
+    </ul>
+  </div>
 </header>
 
 <script>
+  // Scroll background effect
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
     if (window.scrollY > 100) {
@@ -48,6 +102,40 @@
     } else {
       header?.classList.remove("bg-white/80", "backdrop-blur-sm");
     }
+  });
+
+  // Hamburger menu toggle
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  hamburger?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+
+    // Animate hamburger to X
+    const spans = hamburger.querySelectorAll("span");
+    if (mobileMenu?.classList.contains("hidden")) {
+      spans[0].style.transform = "rotate(0)";
+      spans[1].style.opacity = "1";
+      spans[2].style.transform = "rotate(0)";
+    } else {
+      spans[0].style.transform = "rotate(45deg) translateY(8px)";
+      spans[1].style.opacity = "0";
+      spans[2].style.transform = "rotate(-45deg) translateY(-8px)";
+    }
+  });
+
+  // Close mobile menu when clicking a link
+  const mobileLinks = mobileMenu?.querySelectorAll("a");
+  mobileLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+      const spans = hamburger?.querySelectorAll("span");
+      if (spans) {
+        spans[0].style.transform = "rotate(0)";
+        spans[1].style.opacity = "1";
+        spans[2].style.transform = "rotate(0)";
+      }
+    });
   });
 </script>
 
