@@ -44,8 +44,8 @@ export const siteConfig: SiteConfig = {
   accentColor: "#1d4ed8",
   social: {
     email: "z.li@bcbl.eu",
-    linkedin: "https://linkedin.com/in/yourprofile",
-    twitter: "https://x.com/rfitzio",
+    linkedin: "https://www.linkedin.com/in/educational-neuroscience-and-developmental-disorders-0a25223a8/",
+    twitter: "https://x.com/ENDL_BCBL",
     github: "https://github.com/RyanFitzgerald",
   },
   aboutMe: "",
