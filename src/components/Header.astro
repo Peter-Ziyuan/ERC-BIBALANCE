@@ -2,9 +2,18 @@
   id="header"
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
-  <nav class="max-w-7xl mx-auto px-8 py-4">
+  <nav class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#hero" class="flex-shrink-0">
+      <img
+        src="/ERC-BIBALANCE/BCBLlogo_transparent.png"
+        alt="BCBL Logo"
+        class="h-10 md:h-12 w-auto"
+      />
+    </a>
+
     <!-- Desktop Navigation -->
-    <ul class="hidden md:flex items-center gap-8 justify-center">
+    <ul class="hidden md:flex items-center gap-8">
       <li>
         <a
           href="#about"
@@ -42,7 +51,7 @@
     <!-- Mobile Hamburger Button -->
     <button
       id="hamburger"
-      class="md:hidden flex flex-col gap-1.5 p-2"
+      class="md:hidden flex flex-col gap-1.5 p-2 ml-auto"
       aria-label="Toggle menu"
     >
       <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
@@ -97,10 +106,33 @@
   // Scroll background effect
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
+    const navLinks = header?.querySelectorAll("nav ul a");
+    const hamburgerSpans = header?.querySelectorAll("#hamburger span");
+
     if (window.scrollY > 100) {
-      header?.classList.add("bg-white/80", "backdrop-blur-sm");
+      header?.classList.add("bg-white/80", "backdrop-blur-sm", "scrolled");
+      // Change nav links to blue
+      navLinks?.forEach((link) => {
+        link.classList.remove("text-white", "hover:text-gray-300");
+        link.classList.add("text-blue-700", "hover:text-blue-900");
+      });
+      // Change hamburger to blue
+      hamburgerSpans?.forEach((span) => {
+        span.classList.remove("bg-white");
+        span.classList.add("bg-blue-700");
+      });
     } else {
-      header?.classList.remove("bg-white/80", "backdrop-blur-sm");
+      header?.classList.remove("bg-white/80", "backdrop-blur-sm", "scrolled");
+      // Change nav links back to white
+      navLinks?.forEach((link) => {
+        link.classList.remove("text-blue-700", "hover:text-blue-900");
+        link.classList.add("text-white", "hover:text-gray-300");
+      });
+      // Change hamburger back to white
+      hamburgerSpans?.forEach((span) => {
+        span.classList.remove("bg-blue-700");
+        span.classList.add("bg-white");
+      });
     }
   });
 
